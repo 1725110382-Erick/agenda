@@ -8,8 +8,8 @@
 </head>
 <body>
 
-    <div class="card p-4" style="max-width: 450px; width: 100%;">
-        <h2 class="h4 text-center mb-3">Borrar Contacto</h2>
+    <div>
+        <h2>Borrar Contacto</h2>
         
         <div class="alert alert-danger text-center small fw-bold mb-4" role="alert">
             ¿Está seguro de que desea eliminar permanentemente a este contacto?
@@ -17,27 +17,27 @@
         
         <form action="/borrar_contacto" method="post">
             
-            <div class="mb-3">
-                <label class="form-label small">ID</label>
+            <div>
+                <label>ID</label>
                 <input type="text" name="id_contacto" class="form-control" value="8" readonly>
             </div>
             
-            <div class="mb-3">
-                <label class="form-label small">Nombre completo</label>
+            <div>
+                <label>Nombre completo</label>
                 <input type="text" class="form-control" value="Dejah Thoris Barscom" readonly>
             </div>
             
-            <div class="mb-3">
-                <label class="form-label small">Teléfono</label>
+            <div>
+                <label>Teléfono</label>
                 <input type="text" class="form-control" value="111111" readonly>
             </div>
             
-            <div class="mb-4">
-                <label class="form-label small">Email</label>
+            <div>
+                <label>Email</label>
                 <input type="email" class="form-control" value="dejah@email.com" readonly>
             </div>
             
-            <div class="d-flex gap-3">
+            <div>
                 <button type="submit" class="btn btn-outline-dark flex-grow-1">Eliminar</button>
                 <a href="/lista_contactos" class="btn btn-outline-dark flex-grow-1">Cancelar</a>
             </div>

@@ -8,42 +8,42 @@
 </head>
 <body>
 
-    <div class="card p-4" style="max-width: 450px; width: 100%;">
-        <h2 class="h4 text-center mb-4">Editar Contacto</h2>
+    <div>
+        <h2>Editar Contacto</h2>
         
         <form action="/editar_contacto" method="post">
             
-            <div class="mb-3">
-                <label class="form-label">ID</label>
+            <div>
+                <label>ID</label>
                 <input type="text" name="id_contacto" class="form-control" value="8" readonly>
             </div>
             
-            <div class="mb-3">
-                <label class="form-label">Nombre</label>
+            <div>
+                <label>Nombre</label>
                 <input type="text" name="nombre" class="form-control" value="Dejah" required>
             </div>
             
-            <div class="mb-3">
-                <label class="form-label">Primer Apellido</label>
+            <div>
+                <label>Primer Apellido</label>
                 <input type="text" name="primer_apellido" class="form-control" value="Thoris" required>
             </div>
             
-            <div class="mb-3">
-                <label class="form-label">Segundo Apellido</label>
+            <div>
+                <label>Segundo Apellido</label>
                 <input type="text" name="segundo_apellido" class="form-control" value="Mars">
             </div>
 
-            <div class="mb-3">
-                <label class="form-label">Teléfono</label>
+            <div>
+                <label>Teléfono</label>
                 <input type="text" name="telefono" class="form-control" value="111111">
             </div>
 
-            <div class="mb-4">
-                <label class="form-label">Email</label>
+            <div>
+                <label>Email</label>
                 <input type="email" name="email" class="form-control" value="dejah@email.com">
             </div>
             
-            <div class="d-flex gap-3">
+            <div>
                 <button type="submit" class="btn btn-outline-dark flex-grow-1">Guardar cambios</button>
                 <a href="/lista_contactos" class="btn btn-outline-dark flex-grow-1">Cancelar</a>
             </div>
