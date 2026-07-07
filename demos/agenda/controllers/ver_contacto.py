@@ -50,6 +50,5 @@ class VerContacto:
         # para que en el HTML se pueda usar la sintaxis $contacto.nombre
         contacto = web.storage(datos)
         
-        # ¡ESTO ES LO QUE TE FALTABA! Retornar la vista pasándole el contacto
         # Asegúrate de que tu archivo HTML se llame 'ver_contacto.html' y esté dentro de la carpeta 'views'
         return render.ver_contacto(contacto)
