@@ -4,20 +4,40 @@ import sqlite3
 render = web.template.render('views', base='layout')
 
 class BorrarContacto:
-    def GET(self, id_contacto):
-        conn = sqlite3.connect('sql/agenda.db')
-        cursor = conn.cursor()
-        cursor.execute("SELECT id_contacto, nombre, primer_apellido FROM contactos WHERE id_contacto = ?", (id_contacto,))
-        row = cursor.fetchone()
-        conn.close()
-        
-        if not row:
-            return "Contacto no encontrado"
-            
-        contacto = web.storage({'id_contacto': row[0], 'nombre': row[1], 'primer_apellido': row[2]})
-        return render.borrar_contacto(contacto)
 
-    # Bloquear por completo la eliminación
-    def POST(self, id_contacto):
-        # Levantamos el error de método no permitido nativo de web.py
-        raise web.nomethod()
+    def buscarContacto(self, id_contacto:int):
+        try:
+            # Conecta a la base de datos
+            conn = sqlite3.connect('sql/agenda.db')
+            cursor = conn.cursor()
+            # Consulta los registros de la tabla contactos
+            query = "SELECT * FROM contactos WHERE id_contacto = ?"
+            cursor.execute(query, (id_contacto,))
+            # Almacena cada registro en un diccionario
+            row = cursor.fetchone()
+            contacto = {
+                'id_contacto': row[0],
+                'nombre': row[1],
+                'primer_apellido': row[2],
+                'segundo_apellido': row[3],
+                'email': row[4],
+                'telefono': row[5]
+            }
+            # Cierra la conexión a la base de datos
+            conn.close()
+            return contacto
+        except sqlite3.Error as error:
+            print(f"ERROR verContactos 100: {error.args}")
+            return {}
+        except Exception as error:
+            print(f"ERROR verContactos 101: {error.args}")
+            return {}
+        finally:
+            conn.close()
+
+    def GET(self,id_contacto):
+        print(f"ID_CONTACTO: {id_contacto}")
+        contacto =  self.buscarContacto(id_contacto)
+        print(contacto)
+
+        return render.borrar_contacto(contacto)
