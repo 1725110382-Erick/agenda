@@ -41,3 +41,20 @@ class BorrarContacto:
         print(contacto)
 
         return render.borrar_contacto(contacto)
+
+    # --- LO QUE ME PEDISTE AGREGAR ---
+    def POST(self, id_contacto):
+        try:
+            conn = sqlite3.connect('sql/agenda.db')
+            cursor = conn.cursor()
+            query = "DELETE FROM contactos WHERE id_contacto = ?"
+            cursor.execute(query, (id_contacto,))
+            conn.commit()
+            
+            # Si el contador de filas afectadas es mayor a 0, significa que sí lo borró
+            exito = cursor.rowcount > 0
+            conn.close()
+            
+            return True if exito else False
+        except:
+            return False
